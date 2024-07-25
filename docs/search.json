@@ -1,0 +1,934 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Community Capitals Documentation",
+    "section": "",
+    "text": "Capitals Project Description\nThis is a Quarto book used to document the work completed in the DSPG 2024 year for the Community Capitals project.\nProject Sponsor / Collaborator: ISU Community and Economic Development\nDSPG Team Lead: Matthew Voss\nDSPG Graduate Fellow: Solomon Eshun\nDSPG Interns: Lily Christenson, Manjul Balayar, Nhat (Chris) Le",
+    "crumbs": [
+      "Capitals Project Description"
+    ]
+  },
+  {
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "Community Capitals Documentation",
+    "section": "Overview",
+    "text": "Overview\nIn our project, we seek to explore the relationship between community capital indicators and the overall condition of communities in Iowa, aiming to identify strengths, weaknesses, opportunities, and gaps within these communities. The main work focuses on major events such as natural disasters, job losses, new job creation, school closures, and new opportunities for tourism and healthcare. The study seeks to identify the most relevant community capitals, trends over time, and the impact on community resiliency, by analyzing correlations between various indicators and comparing quantitative data with some qualitative insights.\nThat aside, we also seek to develop a comprehensive database of significant events, using sources such as the Worker Adjustment and Retraining Notification Act (WARN), Iowa Economic Development Authority Board minutes, and weather disaster summaries. The Data analysis will include exploring relationships within and between different community capitals, and visualizing findings using dashboards created in Shiny or Tableau. The overall goal is to provide a tool for stakeholders to better understand and enhance community resiliency and quality of life.\n\nProject Description\n\nProject Summary\nWhat do the community capital indicators tell us about a community? Community strengths, weaknesses, opportunities, gaps, etc.\nHow well do the identified indicators tell us about the condition of a community in relationship to the community capitals?\n\n\nProject Scope\n\nDatabase of major events in Iowa communities (natural disasters, plant closings/major job loss, new plant opening/jobs created, school closures/school district mergers, closure of state-run hospitals and nursing care facilities, new opportunities for tourism – music festival, bike trails, recreation, etc., opening of new hospitals/care facilities)\nData analysis:\n\nCorrelations between indicators – including relationship of indicators within and between capitals as well as with different peer groupings (population, RUCC)\nTrends and change over time.\nComparison to qualitative data and use as – visioning, RHRA, small towns poll.\nWhich three capitals are most related (ex: if interested in built capital – which two others might be most relevant to understanding built?)\n\nDashboard – tableau\nResiliency fit into capitals.",
+    "crumbs": [
+      "Capitals Project Description"
+    ]
+  },
+  {
+    "objectID": "box-structure.html",
+    "href": "box-structure.html",
+    "title": "Structure of the Capitals Box Directory",
+    "section": "",
+    "text": "Capitals\n├── Data\n│   ├── Capitals Data\n│   |   ├── Source Data (Raw) #Raw data before any preprocessing.\n│   |   ├── Preprocessed Datasets #Datasets after initial preprocessing.\n│   |   ├── Final Datasets #Ready-to-use, cleaned datasets, with data sources.\n│   |   ├── Time Series Datasets #ACS datasets formatted for time series analysis.\n│   |   └── Capitals Data Sources.docx #Document listing data sources.\n|   |\n│   ├── Event Data\n│   │   ├── Raw Data #Unprocessed event data.\n│   │   ├── Preprocessed Data #Event data after initial processing.\n│   │   ├── Data_Sources.xlsx #Spreadsheet of event data sources.\n│   │   └── Event_Timeline_Sample Structure.xlsx #Sample structure for event timeline data.\n|   |\n│   └── Art_Culture_all_iowa_cities.xlsm #Excel file with art and culture data for Iowa cities.\n|\n├── Literature #Collection of documents and research literature\n│   ├── Previous Projects\n│   ├── Community Capitals\n│   ├── Student Reviews\n│   ├── Art + Culture\n│   └── Third Places\n|\n├── Scripts #Collection of scripts for data processing and analysis.\n│   ├── Social & Cultural\n│   ├── ACS_Time_Series\n│   ├── Natural & Built\n│   ├── Event Datasets\n│   ├── Documentation Code\n│   └── IowaCultureApp_Scraping.html\n|\n├── Administrative #Administrative documents and organizational files.\n│   ├── event timeline\n│   ├── capitals indicators\n│   ├── community groupings\n│   └── Capitals_Project_Description.docx\n|\n└── Tableau Dashboard\n    └── Community Capitals Dashboard.twbx #Tableau workbook for community capitals.",
+    "crumbs": [
+      "Structure of the Capitals Box Directory"
+    ]
+  },
+  {
+    "objectID": "data-chapters/acs.html",
+    "href": "data-chapters/acs.html",
+    "title": "American Community Survey (5 Year Estimates)",
+    "section": "",
+    "text": "Brief Description\nThe American Community Survey (ACS) provides detailed demographic, social, economic, and housing data based on 5-year estimates. This dataset includes various measures related to community capitals, such as housing, employment, commuting, and broadband subscription.",
+    "crumbs": [
+      "Measurements",
+      "American Community Survey (5 Year Estimates)"
+    ]
+  },
+  {
+    "objectID": "data-chapters/acs.html#general-source",
+    "href": "data-chapters/acs.html#general-source",
+    "title": "American Community Survey (5 Year Estimates)",
+    "section": "General Source",
+    "text": "General Source\nThe primary source for the measures below is the ACS 5-year report, 2022.\n\nMargin of Errors\nMost of the ACS measures and datasets have the high_moe columns which is True if the margin of error is greater than half of the measure.",
+    "crumbs": [
+      "Measurements",
+      "American Community Survey (5 Year Estimates)"
+    ]
+  },
+  {
+    "objectID": "data-chapters/acs.html#prop_single",
+    "href": "data-chapters/acs.html#prop_single",
+    "title": "American Community Survey (5 Year Estimates)",
+    "section": "prop_single",
+    "text": "prop_single\n\nMeasure Description\nPercentage of single-parent households with children.\n\n\nSource\nACS Variables:\n\nB11003_010 (Male household)\nB11003_016 (Female household)\nB11003_001 (total household)\n\n\n\nMeasure Calculation\nThe proportion of single-parent households is calculated by summing the number of male and female single-parent households and dividing by the total number of households.\n\\[\\frac{\\text{Male + Female}}{\\text{Total Household}}\\]",
+    "crumbs": [
+      "Measurements",
+      "American Community Survey (5 Year Estimates)"
+    ]
+  },
+  {
+    "objectID": "data-chapters/acs.html#prop_commute",
+    "href": "data-chapters/acs.html#prop_commute",
+    "title": "American Community Survey (5 Year Estimates)",
+    "section": "prop_commute",
+    "text": "prop_commute\n\nMeasure Description\nPercentage of commuters who commute more than one hour to work.\n\n\nSource\nACS Variables:\n\nB08134_010 (# long-distance Commuters)\nB08134_001 (total commuters)\n\n\n\nMeasure Calculation\nThe proportion of long-distance commuters is calculated by dividing the number of commuters who commute more than one hour by the total number of commuters. \\[\\frac{\\text{Long-distance commuters}}{\\text{Total Commuters}}\\]",
+    "crumbs": [
+      "Measurements",
+      "American Community Survey (5 Year Estimates)"
+    ]
+  },
+  {
+    "objectID": "data-chapters/acs.html#english-proficiency",
+    "href": "data-chapters/acs.html#english-proficiency",
+    "title": "American Community Survey (5 Year Estimates)",
+    "section": "English Proficiency",
+    "text": "English Proficiency\n\nMeasure Description\nPercentage of Residents who are proficient at English.\n\n\nSource\nACS Variables for residents who speak very good English:\n\nB16008_004\nB16008_006\nB16008_009\nB16008_012\nB16008_014\nB16008_017\nB16008_022\nB16008_024\nB16008_027\nB16008_030\nB16008_032\nB16008_035\nB16008_039\nB16008_041\nB16008_044\nB16008_047\nB16008_049\nB16008_052\nB16008_001 (Total # of residents)\n\n\n\nMeasure Calculation\nThe proportion of proficient English speakers is calculated by summing the number of all groups of English speakers and dividing by the total number of residents.\n\\[\\frac{\\text{Sum Proficient}}{\\text{Total Residents}}\\]",
+    "crumbs": [
+      "Measurements",
+      "American Community Survey (5 Year Estimates)"
+    ]
+  },
+  {
+    "objectID": "data-chapters/acs.html#employments-in-agriculture-forestry-fishing-hunting-and-mining",
+    "href": "data-chapters/acs.html#employments-in-agriculture-forestry-fishing-hunting-and-mining",
+    "title": "American Community Survey (5 Year Estimates)",
+    "section": "Employments in agriculture, forestry, fishing, hunting, and mining",
+    "text": "Employments in agriculture, forestry, fishing, hunting, and mining\n\nMeasure Description\nPercentage of the population employed in agriculture, forestry, fishing, hunting, and mining.\n\n\nSource\nACS Variables:\n\nC24030_001 (Total civilian employed population 16 years or older)\nC24030_030 (Female employments 16 years or older in above industries)\nC24030_003 (Male employments 16 years or older in above industries)\n\n\n\nMeasure Calculation\nThe proportion of employed population in these industries is calculated by summing the male and female employments in these industries and dividing by the total civilian employed population.\n\\[\\frac{\\text{Male Employments + Female Employments}}{\\text{Total Employments}}\\]",
+    "crumbs": [
+      "Measurements",
+      "American Community Survey (5 Year Estimates)"
+    ]
+  },
+  {
+    "objectID": "data-chapters/acs.html#median-household-property-value",
+    "href": "data-chapters/acs.html#median-household-property-value",
+    "title": "American Community Survey (5 Year Estimates)",
+    "section": "Median household property value",
+    "text": "Median household property value\n\nMeasure Description\nMedian value of household properties (in dollars).\n\n\nSource\nACS Variables:\n\nB25077_001 (Median household property value)\n\n\n\nMeasure Calculation\nThe median household property value is directly taken from the ACS 5-year report, variable B25077_001.",
+    "crumbs": [
+      "Measurements",
+      "American Community Survey (5 Year Estimates)"
+    ]
+  },
+  {
+    "objectID": "data-chapters/acs.html#median-year-of-built-structures",
+    "href": "data-chapters/acs.html#median-year-of-built-structures",
+    "title": "American Community Survey (5 Year Estimates)",
+    "section": "Median year of built structures",
+    "text": "Median year of built structures\n\nMeasure Description\nMedian year in which structures were built.\n\n\nSource\nACS Variables:\n\nB25035_001 (Median year of built structures)\n\n\n\nMeasure Calculation\nThe median year of built structures is directly taken from the ACS 5-year report, variable B25035_001.",
+    "crumbs": [
+      "Measurements",
+      "American Community Survey (5 Year Estimates)"
+    ]
+  },
+  {
+    "objectID": "data-chapters/acs.html#percentage-of-housing-units-built-before-1960",
+    "href": "data-chapters/acs.html#percentage-of-housing-units-built-before-1960",
+    "title": "American Community Survey (5 Year Estimates)",
+    "section": "Percentage of housing units built before 1960",
+    "text": "Percentage of housing units built before 1960\n\nMeasure Description\nPercentage of housing units built before 1960.\n\n\nSource\nACS Variables:\n\nB25034_010 (Housing units built 1940 to 1949)\nB25034_009 (Housing units built 1950 to 1959)\nB25034_011 (Housing units built before 1940)\nB25034_001 (Total housing units)\n\n\n\nMeasure Calculation\nThe proportion of housing units built before 1960 is calculated by summing the housing units built up to 1959 and dividing by the total number of housing units.",
+    "crumbs": [
+      "Measurements",
+      "American Community Survey (5 Year Estimates)"
+    ]
+  },
+  {
+    "objectID": "data-chapters/acs.html#percentage-of-units-that-are-occupied",
+    "href": "data-chapters/acs.html#percentage-of-units-that-are-occupied",
+    "title": "American Community Survey (5 Year Estimates)",
+    "section": "Percentage of units that are occupied",
+    "text": "Percentage of units that are occupied\n\nMeasure Description\nPercentage of housing units that are occupied.\n\n\nSource\nACS Variables:\n\nB25002_002 (Occupied units)\nB25002_001 (Total units)\n\n\n\nMeasure Calculation\nThe proportion of occupied housing units is calculated by dividing the number of occupied units by the total number of housing units.\n\\[\\frac{\\text{Occupied Units}}{\\text{Total Units}}\\]",
+    "crumbs": [
+      "Measurements",
+      "American Community Survey (5 Year Estimates)"
+    ]
+  },
+  {
+    "objectID": "data-chapters/acs.html#percentage-of-households-with-complete-plumbing",
+    "href": "data-chapters/acs.html#percentage-of-households-with-complete-plumbing",
+    "title": "American Community Survey (5 Year Estimates)",
+    "section": "Percentage of households with complete plumbing",
+    "text": "Percentage of households with complete plumbing\n\nMeasure Description\nPercentage of households with complete plumbing facilities.\n\n\nSource\nACS Variables:\n\nB25047_002 (# Facilities with complete plumbing)\nB25047_001 (Total plumbing facilities)\n\n\n\nMeasure Calculation\nThe proportion of households with complete plumbing is calculated by dividing the number of facilities with complete plumbing by the total number of plumbing facilities.\n\\[\\frac{\\text{Complete Plumbing}}{\\text{Total Plumbing}}\\]",
+    "crumbs": [
+      "Measurements",
+      "American Community Survey (5 Year Estimates)"
+    ]
+  },
+  {
+    "objectID": "data-chapters/acs.html#percentage-of-households-with-a-broadband-subscription",
+    "href": "data-chapters/acs.html#percentage-of-households-with-a-broadband-subscription",
+    "title": "American Community Survey (5 Year Estimates)",
+    "section": "Percentage of households with a broadband subscription",
+    "text": "Percentage of households with a broadband subscription\n\nMeasure Description\nPercentage of households with a broadband internet subscription.\n\n\nSource\nACS Variables:\n\nB28011_004 (# Internet subscriptions in households using broadband)\nB28002_001 (Total internet subscriptions in households)\n\n\n\nMeasure Calculation\nThe proportion of households with a broadband subscription is calculated by dividing the number of households with broadband internet subscriptions by the total number of households with internet subscriptions.\n\\[\\frac{\\text{Broadband Subsription}}{\\text{Total Internet Subscription}}\\]",
+    "crumbs": [
+      "Measurements",
+      "American Community Survey (5 Year Estimates)"
+    ]
+  },
+  {
+    "objectID": "data-chapters/acs.html#race-diversity",
+    "href": "data-chapters/acs.html#race-diversity",
+    "title": "American Community Survey (5 Year Estimates)",
+    "section": "Race Diversity",
+    "text": "Race Diversity\n\nMeasure Description\nDiversity in the distribution of different race across Iowa communities.\n\n\nSource\nACS Variables:\n\nB03002_003 (Not Hispanic or Latino:!!White alone)\nB03002_004 (Not Hispanic or Latino:!!Black or African American alone)\nB03002_005 (Not Hispanic or Latino:!!American Indian and Alaska Native alone)\nB03002_006 (Not Hispanic or Latino:!!Asian alone)\nB03002_007 (Not Hispanic or Latino:!!Native Hawaiian and Other Pacific Islander alone)\nB03002_008 (Not Hispanic or Latino:!!Some other race alone)\nB03002_009 (Not Hispanic or Latino:!!Two or more races)\nB03002_013 (Hispanic or Latino:!!White alone)\nB03002_014 (Hispanic or Latino:!!Black or African American alone)\nB03002_015 (Hispanic or Latino:!!American Indian and Alaska Native alone)\nB03002_016 (Hispanic or Latino:!!Asian alone)\nB03002_017 (Hispanic or Latino:!!Native Hawaiian and Other Pacific Islander alone)\nB03002_018 (Hispanic or Latino:!!Some other race alone)\nB03002_019 (Hispanic or Latino:!!Two or more races)\n\n\n\nMeasure Calculation\n\nSimpson Index\n\\[D = 1 - \\left( \\frac{\\sum n(n-1)}{N(N-1)} \\right)\\]\nWhere:\n• n = the total number of organisms of a particular species\n• N = the total number of organisms of all species\nInterpretation: Simpson’s Diversity Index is a measure of diversity which takes into account the number of species present, as well as the relative abundance of each species. As species richness and evenness increase, so diversity increases. It is also the probability of picking two random individuals which are not of the same group.\n\n\nRace Diversity\nWith different groups of race taken from ACS, we calculate the Simpson Index to measure the diversity, using the above formula.",
+    "crumbs": [
+      "Measurements",
+      "American Community Survey (5 Year Estimates)"
+    ]
+  },
+  {
+    "objectID": "data-chapters/bes.html",
+    "href": "data-chapters/bes.html",
+    "title": "Bureau of Economic Analysis",
+    "section": "",
+    "text": "Brief Description\nBureau of Economic Analysis provides data about GDP of different industries.",
+    "crumbs": [
+      "Measurements",
+      "Bureau of Economic Analysis"
+    ]
+  },
+  {
+    "objectID": "data-chapters/bes.html#source",
+    "href": "data-chapters/bes.html#source",
+    "title": "Bureau of Economic Analysis",
+    "section": "Source",
+    "text": "Source\nGDP of Industries in Iowa",
+    "crumbs": [
+      "Measurements",
+      "Bureau of Economic Analysis"
+    ]
+  },
+  {
+    "objectID": "data-chapters/bes.html#gdp-of-agriculture-forestry-fishing-and-hunting",
+    "href": "data-chapters/bes.html#gdp-of-agriculture-forestry-fishing-and-hunting",
+    "title": "Bureau of Economic Analysis",
+    "section": "GDP of Agriculture, forestry, fishing and hunting",
+    "text": "GDP of Agriculture, forestry, fishing and hunting\n\nMeasure Description\nAgricultural GDP as share of total county GDP\n\n\nMeasure Calculation\nUsing R, take the GDP of Agriculture, forestry, fishing and hunting and divide by total GDP of the county",
+    "crumbs": [
+      "Measurements",
+      "Bureau of Economic Analysis"
+    ]
+  },
+  {
+    "objectID": "data-chapters/bes.html#gdp-of-mining-quarrying-and-oil-and-gas-extraction",
+    "href": "data-chapters/bes.html#gdp-of-mining-quarrying-and-oil-and-gas-extraction",
+    "title": "Bureau of Economic Analysis",
+    "section": "GDP of Mining, quarrying, and oil and gas extraction",
+    "text": "GDP of Mining, quarrying, and oil and gas extraction\n\nMeasure Description\nMining GDP as share of total county GDP\n\n\nMeasure Calculation\nUsing R, take the GDP of Mining, quarrying, and oil and gas extraction and divide by total GDP of the county",
+    "crumbs": [
+      "Measurements",
+      "Bureau of Economic Analysis"
+    ]
+  },
+  {
+    "objectID": "data-chapters/county-health-rate.html",
+    "href": "data-chapters/county-health-rate.html",
+    "title": "County Health Rankings",
+    "section": "",
+    "text": "Brief Description\nCounty Health Rankings data provides insights into the health outcomes and factors influencing health within counties across the United States. It includes measures related to natural and built environments, such as air and water quality, child care, and access to healthy foods.\nSource: County Health Rankings",
+    "crumbs": [
+      "Measurements",
+      "County Health Rankings"
+    ]
+  },
+  {
+    "objectID": "data-chapters/county-health-rate.html#measures",
+    "href": "data-chapters/county-health-rate.html#measures",
+    "title": "County Health Rankings",
+    "section": "Measures",
+    "text": "Measures\nInitially, each measure in the dataset included its raw value along with the high and low values of its confidence interval. However, we chose to use only the raw values for our final dataset. Additionally, while the child care and food environment index measures were not used in our county health rankings natural dataset, they were incorporated into our built capital analysis.\n\nFair_Health_rawvalue\nFair_Health_cilow\nFair_Health_cihigh\nParticulate_Matter_rawvalue\nParticulate_Matter_cilow\nParticulate_Matter_cihigh\nDrinking_Water_Violations_rawvalue\n\nDrinking_Water_Violations_cilow\n\nDrinking_Water_Violations_cihigh\n\nChild_Care_Centers_rawvalue\n\nChild_Care_Centers_cilow\n\nChild_Care_Centers_cihigh\n\nFood_Environment_Index_rawvalue\n\nFood_Environment_Index_cilow\n\nFood_Environment_Index_cihigh\n\n\nFinal Measures for Natural\n\nParticulate_Matter: Particulate matter (PM) encompasses microscopic particles suspended in the air, such as dust, dirt, soot, smoke, and liquid droplets.\nDrinking_Water_Violations: Water Pollution\n\n\n\nFinal Measures for Built\n\nFood Enviroment Index: Limited Access to Healthy Foods estimates the percentage of the population that is low income and does not live close to a grocery store. (according to, County Health Rankings)",
+    "crumbs": [
+      "Measurements",
+      "County Health Rankings"
+    ]
+  },
+  {
+    "objectID": "data-chapters/environ-justice.html",
+    "href": "data-chapters/environ-justice.html",
+    "title": "Environmental Justice Screening Tool",
+    "section": "",
+    "text": "Brief Description\nThe Environmental Justice Screening Tool Dataset provides information on various environmental and health hazards that can affect communities, helping to identify areas with higher risks and vulnerabilities. It includes pre-calculated measures such as air toxics cancer risk, respiratory hazard index, and proximity to hazardous waste.\nSource: EPA - EJScreen",
+    "crumbs": [
+      "Measurements",
+      "Environmental Justice Screening Tool"
+    ]
+  },
+  {
+    "objectID": "data-chapters/environ-justice.html#measures",
+    "href": "data-chapters/environ-justice.html#measures",
+    "title": "Environmental Justice Screening Tool",
+    "section": "Measures",
+    "text": "Measures\n\nCancer_Risk: Evaluates the risk of cancer associated with exposure to air toxics.\nResp_Hazard_Index: Assesses the risk to respiratory health from exposure to air toxics.\nToxic_Release_Air: Measures the amount of toxic substances released into the air.\nHazard_Waste_Prox: Indicates the proximity to hazardous waste sites.\nWastewater_Discharge: Represents the quantity of wastewater discharged into the environment.\n\nAll of these measures were pre-calculated, with detailed information on their exact calculation available in the data source PDF. While the dataset includes numerous potential measures, we focused on using the most general ones.\nEJScreen Technical Documentation",
+    "crumbs": [
+      "Measurements",
+      "Environmental Justice Screening Tool"
+    ]
+  },
+  {
+    "objectID": "data-chapters/fbi-crime.html",
+    "href": "data-chapters/fbi-crime.html",
+    "title": "Federal Bureau of Investigations Crime Reports",
+    "section": "",
+    "text": "Brief Description\nThe FBI Crime Reports dataset provides detailed information on various criminal activities across different counties. For our analysis, we primarily focused on violent offenses such mas murder, forcible rape, robbery, and aggravated assault. We calculated the crime rate per 10,000 people to understand the prevalence of these violent crimes in each county.",
+    "crumbs": [
+      "Measurements",
+      "Federal Bureau of Investigations Crime Reports"
+    ]
+  },
+  {
+    "objectID": "data-chapters/fbi-crime.html#focusing-on-violent-crimes",
+    "href": "data-chapters/fbi-crime.html#focusing-on-violent-crimes",
+    "title": "Federal Bureau of Investigations Crime Reports",
+    "section": "Focusing on Violent Crimes",
+    "text": "Focusing on Violent Crimes\n\nMurder: 11(Non-negligent)\nForcible Rape: 20\nRobbery: 30\nAggravated Assault: 40\n\nSource: Uniform Crime Reporting Program Data",
+    "crumbs": [
+      "Measurements",
+      "Federal Bureau of Investigations Crime Reports"
+    ]
+  },
+  {
+    "objectID": "data-chapters/fbi-crime.html#measures",
+    "href": "data-chapters/fbi-crime.html#measures",
+    "title": "Federal Bureau of Investigations Crime Reports",
+    "section": "Measures",
+    "text": "Measures\nCrime_rate_per_10K: Divided the total number of violent crimes in each county by the county’s population.\n\nMeasure Calculation\n\\[\n\\text{Crime\\_rate\\_per\\_10K} = \\frac{\\text{Total Number of Violent Crimes}}{\\text{Population}}\\times 10000\n\\]",
+    "crumbs": [
+      "Measurements",
+      "Federal Bureau of Investigations Crime Reports"
+    ]
+  },
+  {
+    "objectID": "data-chapters/fema.html",
+    "href": "data-chapters/fema.html",
+    "title": "FEMA National Risk Index",
+    "section": "",
+    "text": "Brief Description\nThe FEMA National Risk Index Dataset provides information on the expected annual losses from various natural disasters across the United States. It is designed to help communities understand their risk levels and make informed decisions about mitigation and preparedness.\nSource: FEMA NRI",
+    "crumbs": [
+      "Measurements",
+      "FEMA National Risk Index"
+    ]
+  },
+  {
+    "objectID": "data-chapters/fema.html#measures",
+    "href": "data-chapters/fema.html#measures",
+    "title": "FEMA National Risk Index",
+    "section": "Measures",
+    "text": "Measures\nEssentially, we kept the total annual loss for each type of disaster up until 2020. The annual loss was simply a cumulative sum of all the other loss types and was already provided by the dataset. Therefore, not much was changed in this dataset.\n\nFlood_Expected_Annual_Loss\nHeat_Wave_Expected_Annual_Loss\nHail_Expected_Annual_Loss\nStrong_Wind_Expected_Annual_Loss\nTornado_Expected_Annual_Loss\nWinter_Weather_Expected_Annual_Loss\nIce_Storm_Expected_Annual_Loss",
+    "crumbs": [
+      "Measurements",
+      "FEMA National Risk Index"
+    ]
+  },
+  {
+    "objectID": "data-chapters/homeland-inf.html",
+    "href": "data-chapters/homeland-inf.html",
+    "title": "Homeland Infrastructure Foundation Level Data",
+    "section": "",
+    "text": "Brief Description\nThe Homeland Infrastructure Foundation Level Dataset (HIFLD) is a comprehensive collection of geospatial data critical for infrastructure planning and management, focusing on essential public services and facilities. Its datasets, which are integral to the built capital, include measures such as Cellular Towers, Colleges and Universities, Convention Centers, Fire and Emergency Stations, Hospitals, Law Enforcement Locations, Sports Venues, Private and Public Schools, Community Colleges, and Child Care Centers.\nSource: HIFLD",
+    "crumbs": [
+      "Measurements",
+      "Homeland Infrastructure Foundation Level Data"
+    ]
+  },
+  {
+    "objectID": "data-chapters/homeland-inf.html#measures",
+    "href": "data-chapters/homeland-inf.html#measures",
+    "title": "Homeland Infrastructure Foundation Level Data",
+    "section": "Measures",
+    "text": "Measures\n\nCellular_Towers_per_10k\nCollege_Universities_per_10k\nConvention_Centers_per_10k\nFire_Emergency_Stations_per_10k\nHospitals_per_10k\nLocal_Law_Enforcement_Locations_per_10k\nSports_Venues_per_10k\nPrivate_Schools_per_10k\nPublic_Schools_per_10k\nCommunity_Colleges_per_10k\nChild_Care_Centers_per_10k (ONLY County level)\n\nAll these measurements were obtained from the Homeland Infrastructure Foundation Level Dataset, except for the childcare data, which was sourced from the County Health Rankings Dataset. Initially, all datasets were in geojson format so after extraction we performed a spatial join with the ACS population data at both the city and county levels to obtain the GEOID, population, and accurate county and city names, ensuring each location was correctly correlated.\nFor the per_10k calculations, I used ACS population data, dividing the total number of venues by the population and then multiplying by 10,000:\nper10k = [\n    'Cellular_Towers', 'College_Universities', 'Convention_Centers', 'Fire_Emergency_Stations',\n    'Hospitals', 'Local_Law_Enforcement_Locations', 'Sports_Venues', 'Private_Schools', 'Public_Schools',\n    'Community_Colleges', 'Child_Care_Centers'\n]\n\nfor count in per10k:\n  county[f'{count}_per_10k'] = ((county[count] / county['Population']) * 10000)",
+    "crumbs": [
+      "Measurements",
+      "Homeland Infrastructure Foundation Level Data"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-culture.html",
+    "href": "data-chapters/iowa-culture.html",
+    "title": "Iowa Culture App",
+    "section": "",
+    "text": "Brief Description\nIowa Culture App provides detailed information on various arts, history and cultural destinations in Iowa.",
+    "crumbs": [
+      "Measurements",
+      "Iowa Culture App"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-culture.html#source",
+    "href": "data-chapters/iowa-culture.html#source",
+    "title": "Iowa Culture App",
+    "section": "Source",
+    "text": "Source\nSource: Iowa Culture\nA sample code to extract the data from Iowa Culture is illustrated below. A complete code is located in the html file Code for Web Scraping.\n\npip install researchpy bs4\n\n\nimport json\nimport re\nfrom bs4 import BeautifulSoup\nimport pandas as pd\nimport warnings\nimport researchpy as rp\nimport os\nwarnings.filterwarnings('ignore')\n\nThe extract_info() function below extracts the dataset from the culture app website based on a provided html format. This function is specific to the nature of the html format presented on the culture app website.\n\ndef extract_info(data):\n    results = []\n    for place in data['p']:\n        info = {}\n        info['title'] = place['title']\n        info['latitude'] = place['lat']\n        info['longitude'] = place['lon']\n        info['image'] = f\"/images/icons/markers/{place['icon']}\"\n\n        # Extracting distance\n        distance_start = place['win'].find('&lt;span class=\"distance\"&gt;') + len('&lt;span class=\"distance\"&gt;')\n        distance_end = place['win'].find('&lt;/span&gt;', distance_start)\n        info['distance'] = place['win'][distance_start:distance_end].strip()\n\n        # Extracting full address\n        address_start = place['win'].find('&lt;strong&gt;Address:&lt;/strong&gt;') + len('&lt;strong&gt;Address:&lt;/strong&gt;')\n        address_end = place['win'].find('&lt;/p&gt;', address_start)\n        info['address'] = place['win'][address_start:address_end].strip().replace('&lt;br /&gt;', ', ')\n\n        # Extracting phone number\n        phone_start = place['win'].find('&lt;i class=\"fa fa-phone fa-fw\"&gt;&lt;/i&gt;')\n        if phone_start != -1:\n            phone_start += len('&lt;i class=\"fa fa-phone fa-fw\"&gt;&lt;/i&gt;')\n            phone_end = place['win'].find('&lt;/p&gt;', phone_start)\n            info['phone'] = place['win'][phone_start:phone_end].strip()\n        else:\n            info['phone'] = None\n\n        # Extracting website\n        website_start = place['win'].find('&lt;i class=\"fa fa-globe fa-fw\"&gt;&lt;/i&gt;&lt;a href=\"')\n        if (website_start != -1):\n            website_start += len('&lt;i class=\"fa fa-globe fa-fw\"&gt;&lt;/i&gt;&lt;a href=\"')\n            website_end = place['win'].find('\"', website_start)\n            info['website'] = place['win'][website_start:website_end].strip()\n        else:\n            info['website'] = None\n\n        results.append(info)\n\n    return results\n\nextract_city_county(): is used to extract the the specific city and county from the address since the html format from the website does not explicitly give the either the city or county, but gives them in a single address.\nextract_marker(): extracts the marker from the image path in the html file to know the specific category.\n\n# Function to get city and county from the address\ndef extract_city_county(address):\n    parts = address.split(',')\n    city = None\n    county = None\n    for i, part in enumerate(parts):\n        if 'IA' in part:\n            city = parts[i-1].strip()\n        if 'County' in part:\n            county = part.strip().replace(' County', '')\n    return city, county\n\n\n# Function to extract image path as marker\ndef extract_marker(image_path):\n    base_name = os.path.basename(image_path)\n    marker_name = os.path.splitext(base_name)[0]\n    return marker_name\n\nThe functionality of extract_info() is tested in the chunk below\n\narts = {\n    \"s\": 1,\n    \"p\": [\n        {\n            \"icon\": \"national-register-of-historic-places.png\",\n            \"title\": \"Christian Peterson Courtyard Sculptures and Dairy Industry Building\",\n            \"lat\": \"42.026731\",\n            \"lon\": \"-93.642860\",\n            \"win\": \"&lt;div class=\\\"window-container scroll\\\"&gt;\\n\\t&lt;div class=\\\"image-container\\\"&gt;\\n\\t\\t&lt;img src=\\\"/images/default/history.jpg\\\" class=\\\"scale\\\" /&gt;\\n\\t&lt;/div&gt;\\n\\t&lt;div class=\\\"window-content\\\"&gt;\\n\\t\\t&lt;div class=\\\"window-title\\\"&gt;\\n\\t\\t\\t&lt;div class=\\\"pin\\\"&gt;&lt;figure&gt;&lt;img src=\\\"/images/icons/markers/national-register-of-historic-places.png\\\" alt=\\\"\\\" class=\\\"scale\\\" /&gt;&lt;/figure&gt;&lt;/div&gt;\\n\\t\\t\\t&lt;div class=\\\"rl-content\\\"&gt;&lt;span class=\\\"title\\\"&gt;Christian Peterson Courtyard Sculptures and Dairy Industry Building&lt;/span&gt;&lt;span class=\\\"city\\\"&gt;&lt;a href=\\\"https://maps.google.com/maps?q=42.026731,-93.642860\\\" target=\\\"_blank\\\"&gt;Get Directions&lt;/a&gt;&lt;/span&gt;\\n\\t\\t\\t&lt;span class=\\\"distance\\\"&gt;0.1mi.&lt;/span&gt;&lt;/div&gt;\\n\\t\\t&lt;/div&gt;\\n\\n\\t\\t&lt;p&gt;Christian Petersen was the only sculptor in the Public Works of Art Project in Iowa City in 1934, directed by Iowa Painter Grant Wood. His sculptures here are regarded as &quot;significant artistic statements on agriculture, technology, and higher education in mid-1930s America.&quot; The Christian Peterson Courtyard Sculptures and Dairy Industry Building was added to the National Register of Historic Places in 1987.&lt;/p&gt;\\t\\t\\t\\t\\t\\t\\t\\t&lt;p class=\\\"loc-address\\\"&gt;\\n\\t\\t\\t&lt;strong&gt;Address:&lt;/strong&gt;\\n\\t\\t\\tUnion Dr.&lt;br /&gt;Ames, IA 50010&lt;br /&gt;Story County\\t\\t&lt;/p&gt;\\n\\t\\t\\t\\t\\n\\t\\t&lt;/div&gt;\\n\\t&lt;/div&gt;\"\n        },\n        {\n            \"icon\": \"public-art.png\",\n            \"title\": \"Escalieta I\",\n            \"lat\": \"42.025650\",\n            \"lon\": \"-93.644474\",\n            \"win\": \"&lt;div class=\\\"window-container scroll\\\"&gt;\\n\\t&lt;div class=\\\"image-container\\\"&gt;\\n\\t\\t&lt;img src=\\\"/images/default/arts.jpg\\\" class=\\\"scale\\\" /&gt;\\n\\t&lt;/div&gt;\\n\\t&lt;div class=\\\"window-content\\\"&gt;\\n\\t\\t&lt;div class=\\\"window-title\\\"&gt;\\n\\t\\t\\t&lt;div class=\\\"pin\\\"&gt;&lt;figure&gt;&lt;img src=\\\"/images/icons/markers/public-art.png\\\" alt=\\\"\\\" class=\\\"scale\\\" /&gt;&lt;/figure&gt;&lt;/div&gt;\\n\\t\\t\\t&lt;div class=\\\"rl-content\\\"&gt;&lt;span class=\\\"title\\\"&gt;Escalieta I&lt;/span&gt;&lt;span class=\\\"city\\\"&gt;&lt;a href=\\\"https://maps.google.com/maps?q=42.025650,-93.644474\\\" target=\\\"_blank\\\"&gt;Get Directions&lt;/a&gt;&lt;/span&gt;\\n\\t\\t\\t&lt;span class=\\\"distance\\\"&gt;0.1mi.&lt;/span&gt;&lt;/div&gt;\\n\\t\\t&lt;/div&gt;\\n\\n\\t\\t&lt;p&gt;Manuel Neri created this marble sculpture in 2004. The sculpture references the female form, a goddess figure, in a state of transformation.&lt;/p&gt;\\t\\t\\t\\t\\t\\t\\t\\t&lt;p class=\\\"loc-address\\\"&gt;\\n\\t\\t\\t&lt;strong&gt;Address:&lt;/strong&gt;\\n\\t\\t\\tWallace Rd.&lt;br /&gt;Gerdin Business Building, Iowa State University&lt;br /&gt;Ames, IA 50011&lt;br /&gt;Story County\\t\\t&lt;/p&gt;\\n\\t\\t&lt;p class=\\\"iw-contact\\\"&gt;&lt;i class=\\\"fa fa-phone fa-fw\\\"&gt;&lt;/i&gt; 515.242.6195&lt;/p&gt;\\t\\t&lt;p class=\\\"iw-contact\\\"&gt;&lt;i class=\\\"fa fa-globe fa-fw\\\"&gt;&lt;/i&gt;&lt;a href=\\\"http://www.publicartarchive.org/work/escalieta-i\\\" target=\\\"_blank\\\"&gt;Website&lt;/a&gt;&lt;/p&gt;\\n\\t\\t&lt;/div&gt;\\n\\t&lt;/div&gt;\"\n        },\n        {\n            \"icon\": \"public-art.png\",\n            \"title\": \"History of Dairying\",\n            \"lat\": \"42.026875\",\n            \"lon\": \"-93.642983\",\n            \"win\": \"&lt;div class=\\\"window-container scroll\\\"&gt;\\n\\t&lt;div class=\\\"image-container\\\"&gt;\\n\\t\\t&lt;img src=\\\"https://www.iowacultureapp.com/images/story-artpublic-historyofdairying.jpg\\\" class=\\\"scale\\\" /&gt;\\n\\t&lt;/div&gt;\\n\\t&lt;div class=\\\"window-content\\\"&gt;\\n\\t\\t&lt;div class=\\\"window-title\\\"&gt;\\n\\t\\t\\t&lt;div class=\\\"pin\\\"&gt;&lt;figure&gt;&lt;img src=\\\"/images/icons/markers/public-art.png\\\" alt=\\\"\\\" class=\\\"scale\\\" /&gt;&lt;/figure&gt;&lt;/div&gt;\\n\\t\\t\\t&lt;div class=\\\"rl-content\\\"&gt;&lt;span class=\\\"title\\\"&gt;History of Dairying&lt;/span&gt;&lt;span class=\\\"city\\\"&gt;&lt;a href=\\\"https://maps.google.com/maps?q=42.026875,-93.642983\\\" target=\\\"_blank\\\"&gt;Get Directions&lt;/a&gt;&lt;/span&gt;\\n\\t\\t\\t&lt;span class=\\\"distance\\\"&gt;0.1mi.&lt;/span&gt;&lt;/div&gt;\\n\\t\\t&lt;/div&gt;\\n\\n\\t\\t&lt;p&gt;Christian Peterson, an artist-in-residence at Iowa State University from 1934 to 1955, was commissioned to create this sculptural mural, depicting the history of \\r\\n the dairy industry in Iowa and America, as part of the Depression-era Public Works of Art Project.  The bas relief, measuring 84 inches x 972 inches, took eight months to complete.  This terra cotta work was the beginning of Peterson&#039;s 21 year career as campus sculptor-in-residence.&lt;/p&gt;\\t\\t\\t\\t\\t\\t\\t\\t&lt;p class=\\\"loc-address\\\"&gt;\\n\\t\\t\\t&lt;strong&gt;Address:&lt;/strong&gt;\\n\\t\\t\\tFood Sciences Building Courtyard&lt;br /&gt;Iowa State University&lt;br /&gt;Ames, IA 50010&lt;br /&gt;Story County\\t\\t&lt;/p&gt;\\n\\t\\t&lt;p class=\\\"iw-contact\\\"&gt;&lt;i class=\\\"fa fa-phone fa-fw\\\"&gt;&lt;/i&gt; 515.294.3342&lt;/p&gt;\\t\\t\\n\\t\\t&lt;/div&gt;\\n\\t&lt;/div&gt;\"\n        }\n    ]\n}\n\n\narts_data = extract_info(arts)\narts_data = pd.DataFrame(arts_data)\narts_data[['city', 'county']] = arts_data['address'].apply(lambda x: pd.Series(extract_city_county(x)))\narts_data['marker'] = arts_data['image'].apply(extract_marker)\narts_data\n\n\n\n\n\n\n\n\ntitle\nlatitude\nlongitude\nimage\ndistance\naddress\nphone\nwebsite\ncity\ncounty\nmarker\n\n\n\n\n0\nChristian Peterson Courtyard Sculptures and Da...\n42.026731\n-93.642860\n/images/icons/markers/national-register-of-his...\n0.1mi.\nUnion Dr., Ames, IA 50010, Story County\nNone\nNone\nAmes\nStory\nnational-register-of-historic-places\n\n\n1\nEscalieta I\n42.025650\n-93.644474\n/images/icons/markers/public-art.png\n0.1mi.\nWallace Rd., Gerdin Business Building, Iowa St...\n515.242.6195\nhttp://www.publicartarchive.org/work/escalieta-i\nAmes\nStory\npublic-art\n\n\n2\nHistory of Dairying\n42.026875\n-93.642983\n/images/icons/markers/public-art.png\n0.1mi.\nFood Sciences Building Courtyard, Iowa State U...\n515.294.3342\nNone\nAmes\nStory\npublic-art",
+    "crumbs": [
+      "Measurements",
+      "Iowa Culture App"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-culture.html#cultural_locations_per_10k",
+    "href": "data-chapters/iowa-culture.html#cultural_locations_per_10k",
+    "title": "Iowa Culture App",
+    "section": "Cultural_Locations_per_10k",
+    "text": "Cultural_Locations_per_10k\n\nMeasure Description\nFor our analysis, we focused on the total count of historic sites, museums, public art, monuments, and similar locations, collectively referred to as cultural locations. To assess the distribution of these cultural sites within each city or county, we computed the number of cultural locations per 10,000 people. This measure allows us to compare the availability and density of cultural resources across different areas.\n\n\nMeasure Calculation\nAfter extracting the relevant data from the website, we tallied the total number of cultural locations for each city or county. To calculate our measure of interest (Cultural_Locations_per_10k), we used the following steps:\n\nExtracted city/county population data from the American Community Survey (ACS).\nDivided the total number of cultural locations in each city/county by the population of the corresponding city/county.\nMultiplied the results by 10,000 to express the number of cultural locations per 10,000 people.\n\nThus, the final measure Cultural_Locations_per_10k was obtained using this formula:\n\\[\n\\text{Cultural\\_Locations\\_per\\_10k} = \\frac{\\text{Total Number of Cultural Locations}}{\\text{Population}} \\times 10,000\n\\]",
+    "crumbs": [
+      "Measurements",
+      "Iowa Culture App"
+    ]
+  },
+  {
+    "objectID": "data-chapters/dot.html",
+    "href": "data-chapters/dot.html",
+    "title": "Iowa Department of Transportation Bridges",
+    "section": "",
+    "text": "Brief Description\nThe Iowa DOT Bridges dataset includes information on total bridges, obsolete bridges, and deficient bridges. It also contains derived measures such as the proportion of obsolete and deficient bridges and the number of bridges per acre per county.\nSource: Iowa Department of Transportation",
+    "crumbs": [
+      "Measurements",
+      "Iowa Department of Transportation Bridges"
+    ]
+  },
+  {
+    "objectID": "data-chapters/dot.html#measures",
+    "href": "data-chapters/dot.html#measures",
+    "title": "Iowa Department of Transportation Bridges",
+    "section": "Measures",
+    "text": "Measures\nInitially, there were three separate datasets: total bridges, obsolete bridges, and deficient bridges, each including the respective counts. After merging all these datasets, the new measures were:\n\nProportion_Obsolete_Deficient: Calculated by adding total sum of obsolete and deffiecient bridges divided by total bridges.\nBridges_Per_Acre: Calculated by total bridge count divided by county’s total acre per county.\n\nfinal_merge['Proportion_Obsolete_Deficient'] = (final_merge['Obsolete_Count'] + final_merge['Deficient_Count']) / final_merge['Bridges_Count']\nfinal_merge['Bridges_Per_Acre'] = final_merge['Bridges_Count'] / final_merge['county_area']",
+    "crumbs": [
+      "Measurements",
+      "Iowa Department of Transportation Bridges"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-dnr.html",
+    "href": "data-chapters/iowa-dnr.html",
+    "title": "Iowa Department of Natural Resources",
+    "section": "",
+    "text": "Brief Description\nThe Iowa Department of Natural Resources provides data regarding natural aspects such as streams, forest reserve programs, public areas, lakes and wetlands.",
+    "crumbs": [
+      "Measurements",
+      "Iowa Department of Natural Resources"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-dnr.html#wetlands-measure",
+    "href": "data-chapters/iowa-dnr.html#wetlands-measure",
+    "title": "Iowa Department of Natural Resources",
+    "section": "Wetlands Measure",
+    "text": "Wetlands Measure\nWetland_Acres_Prop: Calculated the proportion of wetlands acres per county to the total acres per county.\nfinal_merge['Wetland_Acres_Prop'] = final_merge['Wetland_Acres'] / final_merge['county_area']\nSource: Wetlands in Iowa",
+    "crumbs": [
+      "Measurements",
+      "Iowa Department of Natural Resources"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-dnr.html#forestry-measure",
+    "href": "data-chapters/iowa-dnr.html#forestry-measure",
+    "title": "Iowa Department of Natural Resources",
+    "section": "Forestry Measure",
+    "text": "Forestry Measure\nforest_acres_prop_county: Calculated the proportion of forest acres per county to the total acres per county. The most updated year for forest acres we have is 2020.\nfinal_merge['2020_Forest_Acres_Prop'] = final_merge['2020_Forest_Acres'] / final_merge['county_area']\nSource: Forestry in Iowa",
+    "crumbs": [
+      "Measurements",
+      "Iowa Department of Natural Resources"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-dnr.html#total-stream-length",
+    "href": "data-chapters/iowa-dnr.html#total-stream-length",
+    "title": "Iowa Department of Natural Resources",
+    "section": "Total Stream Length",
+    "text": "Total Stream Length\nStream Length in Miles: Using R, find the geometry of counties (using counties() of tigris) and use st_intersection() to take the geometry intersection of the streams and counties. Apply st_length() to calculate the length of streams and group by county.\nSource: Streams in Iowa",
+    "crumbs": [
+      "Measurements",
+      "Iowa Department of Natural Resources"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-dnr.html#proportion-of-lakes-in-iowa",
+    "href": "data-chapters/iowa-dnr.html#proportion-of-lakes-in-iowa",
+    "title": "Iowa Department of Natural Resources",
+    "section": "Proportion of Lakes in Iowa",
+    "text": "Proportion of Lakes in Iowa\nProportion of Lakes: Using R, find the lake_area of each lake using st_area of the geometry column. Group by county and sum up all the lake areas. Calculate the proportion of lake by dividing the lake_area by the county area (taken from counties() function in tigris package)\nSource: Lakes in Iowa",
+    "crumbs": [
+      "Measurements",
+      "Iowa Department of Natural Resources"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-dnr.html#proportion-of-public-areas-in-iowa",
+    "href": "data-chapters/iowa-dnr.html#proportion-of-public-areas-in-iowa",
+    "title": "Iowa Department of Natural Resources",
+    "section": "Proportion of Public Areas in Iowa",
+    "text": "Proportion of Public Areas in Iowa\nProportion of Public Areas: Using R, find the public_area of each lake using st_area of the geometry column. Group by county and sum up all the public areas. Calculate the proportion of lake by dividing the public_area by the county area (taken from counties() function in tigris package)\nSource: Public Areas in Iowa",
+    "crumbs": [
+      "Measurements",
+      "Iowa Department of Natural Resources"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-gov.html",
+    "href": "data-chapters/iowa-gov.html",
+    "title": "Iowa Government Portal (iowa.gov)",
+    "section": "",
+    "text": "Brief Description\nThe dataset is a 2022 general election turnout report that we got from iowa.gov. The dastset is split up by counties and gives us statistics on the different type of voters in each county.",
+    "crumbs": [
+      "Measurements",
+      "Iowa Government Portal (iowa.gov)"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-gov.html#source",
+    "href": "data-chapters/iowa-gov.html#source",
+    "title": "Iowa Government Portal (iowa.gov)",
+    "section": "Source",
+    "text": "Source\nIowa Secretary of State\nCounty data from ACS 5-year report, 2022",
+    "crumbs": [
+      "Measurements",
+      "Iowa Government Portal (iowa.gov)"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-gov.html#total-absentee-voters",
+    "href": "data-chapters/iowa-gov.html#total-absentee-voters",
+    "title": "Iowa Government Portal (iowa.gov)",
+    "section": "% Total Absentee Voters",
+    "text": "% Total Absentee Voters\n\nMeasure Description\nAbsentee voters are people that cast thier vote remotely instead of at their polling place on election day. We calculated the percentage of absentee voters to the total amount of voters in a county.\n\n\nMeasure Calculation\n\\[\n\\text{\\% Total Absentee Voters} = \\frac{\\text{Absentee Voters}}{\\text{Total Voters}}\n\\]",
+    "crumbs": [
+      "Measurements",
+      "Iowa Government Portal (iowa.gov)"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-gov.html#total-voters-per-10000-people",
+    "href": "data-chapters/iowa-gov.html#total-voters-per-10000-people",
+    "title": "Iowa Government Portal (iowa.gov)",
+    "section": "Total Voters Per 10,000 People",
+    "text": "Total Voters Per 10,000 People\n\nMeasure Description\nProportion of total voters, election day and absentee, in a county per 10,000 people.\n\n\nMeasure Calculation\n\\[\n\\text{Total Voters Per 10,000 People} = \\frac{\\text{Total Voters}}{\\text{Population}}\\times 10000\n\\]",
+    "crumbs": [
+      "Measurements",
+      "Iowa Government Portal (iowa.gov)"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-gov.html#active-voters-per-10000-people",
+    "href": "data-chapters/iowa-gov.html#active-voters-per-10000-people",
+    "title": "Iowa Government Portal (iowa.gov)",
+    "section": "Active Voters Per 10,000 People",
+    "text": "Active Voters Per 10,000 People\n\nMeasure Description\nThe proportion of active voters as of 11/8/2022 in a county per 10,000 people.\n\n\nMeasure Calculation\n\\[\n\\text{Active Voters Per 10,000 People} = \\frac{\\text{Active Voters as of 11/8/2022}}{\\text{Population}}\\times 10000\n\\]",
+    "crumbs": [
+      "Measurements",
+      "Iowa Government Portal (iowa.gov)"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-gov.html#election-day-voters-per-10000-people",
+    "href": "data-chapters/iowa-gov.html#election-day-voters-per-10000-people",
+    "title": "Iowa Government Portal (iowa.gov)",
+    "section": "Election Day Voters Per 10,000 People",
+    "text": "Election Day Voters Per 10,000 People\n\nMeasure Description\nThe proportion of election day voters in a county per 10,000 people.\n\n\nMeasure Calculation\n\\[\n\\text{Election Day Voters Per 10,000 People} = \\frac{\\text{Election Day Voters}}{\\text{Population}}\\times 10000\n\\]",
+    "crumbs": [
+      "Measurements",
+      "Iowa Government Portal (iowa.gov)"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-gov.html#absentee-voters-per-10000-people",
+    "href": "data-chapters/iowa-gov.html#absentee-voters-per-10000-people",
+    "title": "Iowa Government Portal (iowa.gov)",
+    "section": "Absentee Voters Per 10,000 People",
+    "text": "Absentee Voters Per 10,000 People\n\nMeasure Description\nThe proportion of absentee voters in a county per 10,000 people.\n\n\nMeasure Calculation\n\\[\n\\text{Absentee Voters Per 10,000 People} = \\frac{\\text{Absentee Voters}}{\\text{Population}}\\times 10000\n\\]",
+    "crumbs": [
+      "Measurements",
+      "Iowa Government Portal (iowa.gov)"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-state-lib.html",
+    "href": "data-chapters/iowa-state-lib.html",
+    "title": "State Library of Iowa",
+    "section": "",
+    "text": "Brief Description\nState Library of Iowa provides statitics on income, expenditures, collections, circulation, and other measures. It is split up by a cities size and name. We looked at the fiscal year 2023, which is July 1, 2022 - June 30, 2023.",
+    "crumbs": [
+      "Measurements",
+      "State Library of Iowa"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-state-lib.html#source",
+    "href": "data-chapters/iowa-state-lib.html#source",
+    "title": "State Library of Iowa",
+    "section": "Source",
+    "text": "Source\nState Library of Iowa\nCity data from ACS 5-year report, 2022",
+    "crumbs": [
+      "Measurements",
+      "State Library of Iowa"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-state-lib.html#per-capita-expenditures",
+    "href": "data-chapters/iowa-state-lib.html#per-capita-expenditures",
+    "title": "State Library of Iowa",
+    "section": "Per Capita Expenditures",
+    "text": "Per Capita Expenditures\n\nMeasure Description\nPer Capita Expenditures are the average amount of money a library spent per person in a city.\n\n\nMeasure Calculation\n\\[\n\\text{Per Capita Expenditures} = \\frac{\\text{Total Expenditures}}{\\text{Population}}\n\\]",
+    "crumbs": [
+      "Measurements",
+      "State Library of Iowa"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-state-lib.html#capita-expenditures-per-10000-people",
+    "href": "data-chapters/iowa-state-lib.html#capita-expenditures-per-10000-people",
+    "title": "State Library of Iowa",
+    "section": "Capita Expenditures Per 10,000 People",
+    "text": "Capita Expenditures Per 10,000 People\n\nMeasure Description\nPer Capita Expenditures are the average amount of money a library spent per 10,000 people in a city.\n\n\nMeasure Calculation\n\\[\n\\text{Capita Expenditures Per 10,000 People} = \\frac{\\text{Total Expenditures}}{\\text{Population}}\\times 10000\n\\]",
+    "crumbs": [
+      "Measurements",
+      "State Library of Iowa"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-state-lib.html#staff-expenditures-per-10000-people",
+    "href": "data-chapters/iowa-state-lib.html#staff-expenditures-per-10000-people",
+    "title": "State Library of Iowa",
+    "section": "Staff Expenditures Per 10,000 People",
+    "text": "Staff Expenditures Per 10,000 People\n\nMeasure Description\nStaff expenditures is the amount of money spent on paying library staff. The city Library staff expenditures per 10,000 people in a city.\n\n\nMeasure Calculation\n\\[\n\\text{Staff Expenditures Per 10,000 People} = \\frac{\\text{Staff Expenditures}}{\\text{Population}}\\times 10000\n\\]",
+    "crumbs": [
+      "Measurements",
+      "State Library of Iowa"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-state-lib.html#collection-expenditures-per-10000-people",
+    "href": "data-chapters/iowa-state-lib.html#collection-expenditures-per-10000-people",
+    "title": "State Library of Iowa",
+    "section": "Collection Expenditures Per 10,000 People",
+    "text": "Collection Expenditures Per 10,000 People\n\nMeasure Description\nLibrary collection expenditrues are the operating expenses that are used to buy materials in their collections. The Collection Expenditure Per 10,000 People calculates the Library collection expenditures per 10,000 people in a city.\n\n\nMeasure Calculation\n\\[\n\\text{Collection Expenditures Per 10,000 People} = \\frac{\\text{Collection Expenditures}}{\\text{Population}}\\times 10000\n\\]",
+    "crumbs": [
+      "Measurements",
+      "State Library of Iowa"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-state-lib.html#book-circ-per-10000-people",
+    "href": "data-chapters/iowa-state-lib.html#book-circ-per-10000-people",
+    "title": "State Library of Iowa",
+    "section": "Book Circ Per 10,000 People",
+    "text": "Book Circ Per 10,000 People\n\nMeasure Description\nBook circulation accounts for the frequency that books are borrowed and returned to a library. Book Circ Per 10,000 People measures the circulation of books within a city per 10,000 people.\n\n\nMeasure Calculation\n\\[\n\\text{Book Circ Per 10,000 People} = \\frac{\\text{Book1}}{\\text{Population}}\\times 10000\n\\]",
+    "crumbs": [
+      "Measurements",
+      "State Library of Iowa"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-state-lib.html#books-by-total-phys",
+    "href": "data-chapters/iowa-state-lib.html#books-by-total-phys",
+    "title": "State Library of Iowa",
+    "section": "Books by Total Phys",
+    "text": "Books by Total Phys\n\nMeasure Description\nThe proportion of physical items that are books in a library.\n\n\nMeasure Calculation\n\\[\n\\text{Books by Total Phys} = \\frac{\\text{Book1}}{\\text{Total Phys1}}\n\\]",
+    "crumbs": [
+      "Measurements",
+      "State Library of Iowa"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-state-lib.html#book",
+    "href": "data-chapters/iowa-state-lib.html#book",
+    "title": "State Library of Iowa",
+    "section": "Book%",
+    "text": "Book%\n\nMeasure Description\nProportion of physical books out of all the items in a library.\n\n\nMeasure Calculation\n\\[\n\\text{Book\\%} = \\frac{\\text{Book1}}{\\text{Total Use}}\n\\]",
+    "crumbs": [
+      "Measurements",
+      "State Library of Iowa"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-state-lib.html#num-programs-per-10000-people",
+    "href": "data-chapters/iowa-state-lib.html#num-programs-per-10000-people",
+    "title": "State Library of Iowa",
+    "section": "Num Programs Per 10,000 People",
+    "text": "Num Programs Per 10,000 People\n\nMeasure Description\nThe number of library programs across all ages per 10,000 people in a city.\n\n\nMeasure Calculation\n\\[\n\\text{Absentee Voters Per 10,000 People} = \\frac{\\text{Prog6}}{\\text{Population}}\\times 10000\n\\]\nProg6: Total number of programs in a city",
+    "crumbs": [
+      "Measurements",
+      "State Library of Iowa"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-state-lib.html#num-of-attend-per-pop",
+    "href": "data-chapters/iowa-state-lib.html#num-of-attend-per-pop",
+    "title": "State Library of Iowa",
+    "section": "Num of Attend per Pop",
+    "text": "Num of Attend per Pop\n\nMeasure Description\nThe proportion of library program attendance in a city.\n\n\nMeasure Calculation\n\\[\n\\text{Num of Attend per Pop} = \\frac{\\text{Attend6}}{\\text{Population}}\n\\]\nAttend6: Total number of program attendance in a city",
+    "crumbs": [
+      "Measurements",
+      "State Library of Iowa"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-state-lib.html#total-kid-programs",
+    "href": "data-chapters/iowa-state-lib.html#total-kid-programs",
+    "title": "State Library of Iowa",
+    "section": "Total Kid Programs",
+    "text": "Total Kid Programs\n\nMeasure Description\nThe total amount of kid programs that a library has in a city.\n\n\nMeasure Calculation\nProg1 + Prog 2\n\\[\n\\text{Total Kid Programs} = \\text{Prog 1} + \\text{Prog 2}\n\\]",
+    "crumbs": [
+      "Measurements",
+      "State Library of Iowa"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-state-lib.html#num-kid-programs-per-10000-people",
+    "href": "data-chapters/iowa-state-lib.html#num-kid-programs-per-10000-people",
+    "title": "State Library of Iowa",
+    "section": "Num Kid Programs Per 10,000 People",
+    "text": "Num Kid Programs Per 10,000 People\n\nMeasure Description\nThe number of kid programs that a library has per 10,000 people in a city.\n\n\nMeasure Calculation\n\\[\n\\text{Num Kid Programs Per 10,000 People} = \\frac{\\text{Total Kid Programs}}{\\text{Population}}\\times 10000\n\\]",
+    "crumbs": [
+      "Measurements",
+      "State Library of Iowa"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-state-lib.html#visits-per-capita",
+    "href": "data-chapters/iowa-state-lib.html#visits-per-capita",
+    "title": "State Library of Iowa",
+    "section": "Visits Per Capita",
+    "text": "Visits Per Capita\n\nMeasure Description\nPer Capita library visits are the average amount of visits a library get in a city.\n\n\nMeasure Calculation\n\\[\n\\text{Visits Per Capita} = \\frac{\\text{Visits}}{\\text{Population}}\n\\]",
+    "crumbs": [
+      "Measurements",
+      "State Library of Iowa"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-state-lib.html#visits-per-10000-people",
+    "href": "data-chapters/iowa-state-lib.html#visits-per-10000-people",
+    "title": "State Library of Iowa",
+    "section": "Visits Per 10,000 People",
+    "text": "Visits Per 10,000 People\n\nMeasure Description\nThe number of library visits per 10,000 people in a city.\n\n\nMeasure Calculation\n\\[\n\\text{Visits Per 10,000 People} = \\frac{\\text{Visits}}{\\text{Population}}\\times 10000\n\\]",
+    "crumbs": [
+      "Measurements",
+      "State Library of Iowa"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-state-lib.html#wireless-sessions-per-10000-people",
+    "href": "data-chapters/iowa-state-lib.html#wireless-sessions-per-10000-people",
+    "title": "State Library of Iowa",
+    "section": "Wireless Sessions Per 10,000 People",
+    "text": "Wireless Sessions Per 10,000 People\n\nMeasure Description\nThe number of wireless sessions at a library per 10,000 people in a city.\n\n\nMeasure Calculation\n\\[\n\\text{Wireless Sessions Per 10,000 People} = \\frac{\\text{Wireless Sessions}}{\\text{Population}}\\times 10000\n\\]",
+    "crumbs": [
+      "Measurements",
+      "State Library of Iowa"
+    ]
+  },
+  {
+    "objectID": "data-chapters/iowa-state-lib.html#website-visits-per-10000-people",
+    "href": "data-chapters/iowa-state-lib.html#website-visits-per-10000-people",
+    "title": "State Library of Iowa",
+    "section": "Website Visits Per 10,000 People",
+    "text": "Website Visits Per 10,000 People\n\nMeasure Description\nThe number of library website visits per 10,000 in a city.\n\n\nMeasure Calculation\n\\[\n\\text{Website Visits Per 10,000 People} = \\frac{\\text{Website Visits}}{\\text{Population}}\\times 10000\n\\]",
+    "crumbs": [
+      "Measurements",
+      "State Library of Iowa"
+    ]
+  },
+  {
+    "objectID": "data-chapters/open-street.html",
+    "href": "data-chapters/open-street.html",
+    "title": "Open Street Maps",
+    "section": "",
+    "text": "Brief Description\nOpen Street Map is an open data source where people can edit the map of the world. The map contains roads, trails, cafes, railroads, parks, schools, and more.",
+    "crumbs": [
+      "Measurements",
+      "Open Street Maps"
+    ]
+  },
+  {
+    "objectID": "data-chapters/open-street.html#source",
+    "href": "data-chapters/open-street.html#source",
+    "title": "Open Street Maps",
+    "section": "Source",
+    "text": "Source\nOpen Street Map\nCity data from ACS 5-year report, 2022\nU.S. Census Bureau",
+    "crumbs": [
+      "Measurements",
+      "Open Street Maps"
+    ]
+  },
+  {
+    "objectID": "data-chapters/open-street.html#park-area",
+    "href": "data-chapters/open-street.html#park-area",
+    "title": "Open Street Maps",
+    "section": "Park Area",
+    "text": "Park Area\n\nMeasure Description\nThe land designated to parks in a city. To get the city area we had to use the sf package in r to find the area of the polygon geometries of the parks.\n\n\nMeasure Calculation\nFinal_Parks_City_intersection$park_area &lt;- \n    st_area(st_geometry(Final_Parks_City_intersection))",
+    "crumbs": [
+      "Measurements",
+      "Open Street Maps"
+    ]
+  },
+  {
+    "objectID": "data-chapters/open-street.html#city-area",
+    "href": "data-chapters/open-street.html#city-area",
+    "title": "Open Street Maps",
+    "section": "City Area",
+    "text": "City Area\n\nMeasure Description\nThe land designated to the cities in Iowa. We got the polygon geometry for the cities from the Tiger/line Shapefile, choosing 2023 Iowa Places. We then used the sf package in r to find the area of the polygon geometries of the cities.\n\n\nMeasure Calculation\nshape$city_area &lt;- st_area(st_geometry(shape))",
+    "crumbs": [
+      "Measurements",
+      "Open Street Maps"
+    ]
+  },
+  {
+    "objectID": "data-chapters/open-street.html#park-city-proportion",
+    "href": "data-chapters/open-street.html#park-city-proportion",
+    "title": "Open Street Maps",
+    "section": "Park City Proportion",
+    "text": "Park City Proportion\n\nMeasure Description\nThe park area as a proportion of the total city area.\n\n\nMeasure Calculation\n\\[\n\\text{Park City Proportion} = \\frac{\\text{park area}}{\\text{city area}}\n\\]",
+    "crumbs": [
+      "Measurements",
+      "Open Street Maps"
+    ]
+  },
+  {
+    "objectID": "data-chapters/open-street.html#num-parks-per-10k",
+    "href": "data-chapters/open-street.html#num-parks-per-10k",
+    "title": "Open Street Maps",
+    "section": "Num Parks Per 10K",
+    "text": "Num Parks Per 10K\n\nMeasure Description\nThe number of parks in a city per 10,000 people.\n\n\nMeasure Calculation\n\\[\n\\text{Num Parks Per 10K} = \\frac{\\text{number of parks in a city}}{\\text{Population}}\\times 10000\n\\]",
+    "crumbs": [
+      "Measurements",
+      "Open Street Maps"
+    ]
+  },
+  {
+    "objectID": "data-chapters/social-atlas.html",
+    "href": "data-chapters/social-atlas.html",
+    "title": "Social Capital Atlas",
+    "section": "",
+    "text": "Brief Description\nThis information is based on social media data and presence.\nThis is a sample of friendship ties for users aged 25-44 in the United States to construct measures for how communities are connected.\nDifferent measures for social capital in this dataset:\nSource: Social Capital Atlas",
+    "crumbs": [
+      "Measurements",
+      "Social Capital Atlas"
+    ]
+  },
+  {
+    "objectID": "data-chapters/social-atlas.html#brief-description",
+    "href": "data-chapters/social-atlas.html#brief-description",
+    "title": "Social Capital Atlas",
+    "section": "",
+    "text": "Connectedness: How people with different characteristics and backgrounds are friends with each other, this is a clear example of bridging social capital.\nCohesiveness: The degree to which friendship networks are clustered into cliques and whether friendships tend to be supported by mutual friends. This includes our clustering and support ratio measures.\nCivic Engagement: Indices of trust or participation in civic organizations. This includes our volunteering rate measure.",
+    "crumbs": [
+      "Measurements",
+      "Social Capital Atlas"
+    ]
+  },
+  {
+    "objectID": "data-chapters/social-atlas.html#measures",
+    "href": "data-chapters/social-atlas.html#measures",
+    "title": "Social Capital Atlas",
+    "section": "Measures",
+    "text": "Measures\n\neconomic_connectedness_county: The degree of economic connectedness within a county or zip code, reflecting local economic integration and interactions.\nchild_economic_connectedness_county: The level of economic connectedness for children within a county or zip code, indicating economic integration among the younger population.\nsupport_ratio: The ratio of individuals providing support to those needing assistance within a community.\nvolunteering_rate: The percentage of the population engaged in volunteer activities within a county or zip code.\ncivic_organizations: The number of civic organizations present within a county or zip code, indicating community engagement and infrastructure.\nexposure_grp_mem: The extent to which individuals in a county or zip code are exposed to group memberships, reflecting social integration and network density.",
+    "crumbs": [
+      "Measurements",
+      "Social Capital Atlas"
+    ]
+  },
+  {
+    "objectID": "data-chapters/travel.html",
+    "href": "data-chapters/travel.html",
+    "title": "Travel Iowa",
+    "section": "",
+    "text": "Brief Description\nTravel Iowa is the official tourism website for the state of Iowa, offering a wealth of information for those looking to explore. It includes details on new events and attractions, birding spots, stargazing locations, nostalgic soda fountains, and more​.",
+    "crumbs": [
+      "Measurements",
+      "Travel Iowa"
+    ]
+  },
+  {
+    "objectID": "data-chapters/travel.html#source",
+    "href": "data-chapters/travel.html#source",
+    "title": "Travel Iowa",
+    "section": "Source",
+    "text": "Source\nSource: Travel Iowa\nA sample code to extract the data from Travel Iowa is illustrated below. A complete code is located in the html file …… This process below is specific to the nature of the html format we were able to retrieve from the travel Iowa website.\n\npip install bs4\n\n\nhtml_doc = \"\"\"\n\n&lt;div id=\"top\"&gt;\n    &lt;div id=\"ctl00_phMainContent_div3\" class=\"listControls\"&gt;\n        &lt;div class=\"results\"&gt;\n        &lt;/div&gt;\n    &lt;/div&gt;\n\n    \n    &lt;div ID=\"pnlControls\" style=\"display:none;\"&gt;\n        &lt;div class=\"listControls\" id=\"div4\"&gt;\n\n            &lt;div class=\"pager\"&gt;\n                &lt;ul&gt;\n                    &lt;li&gt;\n                        &lt;div id=\"pnlListingPager\"&gt;\n                            Page:\n                            &lt;span id=\"dpListing\"&gt;\n                                        &lt;span class=\"activePage\"&gt;1&lt;/span&gt;\n                                &lt;a class=\"previous\" data-pager-page=\"0\"&gt;previous&lt;/a&gt;\n                                &lt;a class=\"next\" data-pager-page=\"0\"&gt;next&lt;/a&gt;\n                            &lt;/span&gt;\n                            of 1\n                        &lt;/div&gt;\n                    &lt;/li&gt;\n                &lt;/ul&gt;\n            &lt;/div&gt;\n        &lt;/div&gt;\n    &lt;/div&gt;\n\n    &lt;div class=\"grid\"&gt;\n        &lt;div class=\"item\"&gt;\n            &lt;div class=\"item-text\"&gt;\n                &lt;div class=\"item-date\"&gt;Jul&nbsp;&lt;span&gt;4 -&nbsp;7&lt;/span&gt;&lt;/div&gt;\n                &lt;h3 class=\"item-title\"&gt;\n                    &lt;a href=\"/calendar/flea-market-under-the-bridge/1647514\"&gt;Flea Market Under the Bridge&lt;/a&gt;\n                &lt;/h3&gt;\n                &lt;div class=\"item-city\"&gt;Marquette&lt;/div&gt;\n                &lt;div class=\"item-venue\"&gt;\n                    &lt;span&gt;Venue:&lt;/span&gt; &lt;a href=\"/calendar/flea-market-under-the-bridge/1647514\"&gt;Flea Market&lt;/a&gt;\n                &lt;/div&gt;\n            &lt;/div&gt;\n        &lt;/div&gt;\n        &lt;div class=\"item\"&gt;\n            &lt;div class=\"item-text\"&gt;\n                &lt;div class=\"item-date\"&gt;Jul&nbsp;&lt;span&gt;1 -&nbsp;&lt;/span&gt;Oct&nbsp;&lt;span&gt;31&lt;/span&gt;&lt;/div&gt;\n                &lt;h3 class=\"item-title\"&gt;\n                    &lt;a href=\"/calendar/historic-hills-scenic-byway-bale-trail/1643930\"&gt;Historic Hills Scenic Byway Bale Trail&lt;/a&gt;\n                &lt;/h3&gt;\n                &lt;div class=\"item-city\"&gt;Fairfield&lt;/div&gt;\n                &lt;div class=\"item-venue\"&gt;\n                    &lt;span&gt;Venue:&lt;/span&gt; &lt;a href=\"/calendar/historic-hills-scenic-byway-bale-trail/1643930\"&gt;Historic Hills Scenic Byway&lt;/a&gt;\n                &lt;/div&gt;\n            &lt;/div&gt;\n        &lt;/div&gt;\n        &lt;div class=\"end-grid-action\"&gt;\n            &lt;button class=\"button\" id=\"btnShowMoreEvents\"&gt;Show More Events&lt;/button&gt;\n        &lt;/div&gt;\n    &lt;/div&gt;\n    &lt;div ID=\"pnlControls2\" style=\"display:none;\"&gt;\n        &lt;div class=\"listControls\" id=\"div1\"&gt;\n\n            &lt;div class=\"pager\"&gt;\n                &lt;ul&gt;\n                    &lt;li&gt;\n                        &lt;div id=\"pnlListingPager\"&gt;\n                            Page:\n                            &lt;span id=\"dpListing\"&gt;\n                                        &lt;span class=\"activePage\"&gt;1&lt;/span&gt;\n                                &lt;a class=\"previous\" data-pager-page=\"0\"&gt;previous&lt;/a&gt;\n                                &lt;a class=\"next\" data-pager-page=\"0\"&gt;next&lt;/a&gt;\n                            &lt;/span&gt;\n                            of 1\n                        &lt;/div&gt;\n                    &lt;/li&gt;\n                &lt;/ul&gt;\n            &lt;/div&gt;\n        &lt;/div&gt;\n    &lt;/div&gt;\n\n\n\n&lt;/div&gt;\n\n\n\"\"\"\n\n\nimport pandas as pd\nfrom bs4 import BeautifulSoup\npd.set_option('display.max_colwidth', None)\nimport warnings\nwarnings.filterwarnings('ignore')\n\n# Base URL\nbase_url = \"https://www.traveliowa.com\"\n\n# Parse the HTML content\nsoup = BeautifulSoup(html_doc, 'html.parser')\n\n# Find all divs with class 'item'\nitems = soup.find_all('div', class_='item')\n\n# Initialize a list to store the extracted data\ndata = []\n\n# Extract data from each item\nfor item in items:\n    date = item.find('div', class_='item-date').get_text(strip=True)\n    title_tag = item.find('h3', class_='item-title').find('a')\n    title = title_tag.get_text(strip=True)\n    link = base_url + title_tag['href']\n    city = item.find('div', class_='item-city').get_text(strip=True)\n\n    # Check if the venue div and its a tag exist\n    venue_div = item.find('div', class_='item-venue')\n    if venue_div and venue_div.find('a'):\n        venue = venue_div.find('a').get_text(strip=True)\n    else:\n        venue = 'Venue information not available'\n\n    # Append the extracted data to the list\n    data.append({\n        'Date': date,\n        'Title': title,\n        'Link': link,\n        'City': city,\n        'Venue': venue\n    })\n\n# Create a DataFrame from the list of dictionaries\ndf = pd.DataFrame(data)\n\ndf\n\n\n\n\n\n\n\n\nDate\nTitle\nLink\nCity\nVenue\n\n\n\n\n0\nJul4 - 7\nFlea Market Under the Bridge\nhttps://www.traveliowa.com/calendar/flea-market-under-the-bridge/1647514\nMarquette\nFlea Market\n\n\n1\nJul1 -Oct31\nHistoric Hills Scenic Byway Bale Trail\nhttps://www.traveliowa.com/calendar/historic-hills-scenic-byway-bale-trail/1643930\nFairfield\nHistoric Hills Scenic Byway",
+    "crumbs": [
+      "Measurements",
+      "Travel Iowa"
+    ]
+  },
+  {
+    "objectID": "data-chapters/travel.html#events_per_10k",
+    "href": "data-chapters/travel.html#events_per_10k",
+    "title": "Travel Iowa",
+    "section": "Events_per_10k",
+    "text": "Events_per_10k\n\nMeasure Description\nIn our analysis, we focused on the total number of past and future events (2021-2025) for each city. We calculated the total events per 10,000 people to evaluate their distribution across the cities.\n\n\nMeasure Calculation\nAfter extracting the relevant data from the website, we tallied the total number of events for each city. To calculate our measure of interest (Events_per_10k), we used the following steps:\n\nExtracted city population data from the American Community Survey (ACS).\nDivided the total number of events in each city by the population of the corresponding city.\nMultiplied the results by 10,000 to express the number of events per 10,000 people.\n\nThus, the final measure Events_per_10k was obtained using this formula:\n\\[\n\\text{Events\\_per\\_10k} = \\frac{\\text{Total Number of Events}}{\\text{Population}} \\times 10,000\n\\]",
+    "crumbs": [
+      "Measurements",
+      "Travel Iowa"
+    ]
+  },
+  {
+    "objectID": "data-chapters/us-census.html",
+    "href": "data-chapters/us-census.html",
+    "title": "US Census Bureau",
+    "section": "",
+    "text": "Brief Description\nThe 2020 Decennial Census Respondent Rates dataset provides detailed information on the participation rates of households in the 2020 Census, reflecting the level of engagement and response across different regions. This data is crucial for understanding demographic representation and ensuring accurate population counts.\nSource: 2020 Census Response Rates",
+    "crumbs": [
+      "Measurements",
+      "US Census Bureau"
+    ]
+  },
+  {
+    "objectID": "data-chapters/us-census.html#measures",
+    "href": "data-chapters/us-census.html#measures",
+    "title": "US Census Bureau",
+    "section": "Measures",
+    "text": "Measures\ncensus_response_rate: Cummulative Self-Response Rate - Overall\nThis dataset was extracted using the US Census API call, specifically for Iowa using the state code 19. No modifications or additions were made to the data.\nAccess Decennial Self-Response Rates",
+    "crumbs": [
+      "Measurements",
+      "US Census Bureau"
+    ]
+  },
+  {
+    "objectID": "data-chapters/religion.html",
+    "href": "data-chapters/religion.html",
+    "title": "US Religion Census",
+    "section": "",
+    "text": "Brief Description\nThe Dataset provides data about the distribution of different religious traditions.",
+    "crumbs": [
+      "Measurements",
+      "US Religion Census"
+    ]
+  },
+  {
+    "objectID": "data-chapters/religion.html#religious-diversity",
+    "href": "data-chapters/religion.html#religious-diversity",
+    "title": "US Religion Census",
+    "section": "Religious Diversity",
+    "text": "Religious Diversity\n\nMeasure Description\nReligious Tradition Diversity (consider non-religious people as a tradition)\n\n\nMeasure Calculation\n\nSimpson Index\n\\[D = 1 - \\left( \\frac{\\sum n(n-1)}{N(N-1)} \\right)\\]\nWhere:\n• n = the total number of organisms of a particular species\n• N = the total number of organisms of all species\nInterpretation: Simpson’s Diversity Index is a measure of diversity which takes into account the number of species present, as well as the relative abundance of each species. As species richness and evenness increase, so diversity increases. It is also the probability of picking two random individuals which are not of the same group.\n\n\nReligious Diversity\nFrom the dataset, we summarise the dataset by the number of adherents across different religious traditions. Calculate the Simpson Index for different traditions (species) using the formula above.",
+    "crumbs": [
+      "Measurements",
+      "US Religion Census"
+    ]
+  },
+  {
+    "objectID": "data-chapters/usda-census.html",
+    "href": "data-chapters/usda-census.html",
+    "title": "US Department of Agriculture Census",
+    "section": "",
+    "text": "Brief Description\nThe United States Department of Agriculture is the federal executive department responsible for developing and executing federal laws related to farming, forestry, rural economic development, and food.",
+    "crumbs": [
+      "Measurements",
+      "US Department of Agriculture Census"
+    ]
+  },
+  {
+    "objectID": "data-chapters/usda-census.html#prop_crop",
+    "href": "data-chapters/usda-census.html#prop_crop",
+    "title": "US Department of Agriculture Census",
+    "section": "prop_crop",
+    "text": "prop_crop\n\nMeasure Description\nPercentage of crop lands in county\n\n\nMeasure Calculation\ncrop_area: areas of land used for agriculture - crop land, taken from USDA data county_area: areas of the whole counties accross the state of Iowa, calculated by using sf package and passing the geometry \\[\\frac{\\text{crop area}}{\\text{county area}}\\]",
+    "crumbs": [
+      "Measurements",
+      "US Department of Agriculture Census"
+    ]
+  },
+  {
+    "objectID": "data-chapters/usda-census.html#value_per_acre",
+    "href": "data-chapters/usda-census.html#value_per_acre",
+    "title": "US Department of Agriculture Census",
+    "section": "value_per_acre",
+    "text": "value_per_acre\n\nMeasure Description\nValue of every acre of agricultural land - crop land, taken from USDA data\n\n\nMeasure Calculation\nDirectly extract the value per acre from USDA data.",
+    "crumbs": [
+      "Measurements",
+      "US Department of Agriculture Census"
+    ]
+  }
+]
